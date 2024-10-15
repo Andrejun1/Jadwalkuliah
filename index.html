@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Perkuliahan Editable</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.03em;
+        }
+
+        td {
+            font-size: 14px;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .edit-btn {
+            background-color: #2196F3;
+        }
+
+        .edit-btn:hover {
+            background-color: #0b7dda;
+        }
+
+        .save-btn {
+            background-color: #4CAF50;
+        }
+
+        .save-btn:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Jadwal Perkuliahan kelas KS-E Informatika</h2>
+
+    <table id="scheduleTable">
+        <thead>
+            <tr>
+                <th>Hari</th>
+                <th>Waktu</th>
+                <th>Mata Kuliah</th>
+                <th>Dosen</th>
+                <th>Ruang</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Senin</td>
+                <td>08:00 - 10:00</td>
+                <td>Pemrograman Web</td>
+                <td>Dr. Budi Santoso</td>
+                <td>Ruang 101</td>
+                <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Senin</td>
+                <td>10:00 - 12:00</td>
+                <td>Matematika Diskrit</td>
+                <td>Prof. Siti Aminah</td>
+                <td>Ruang 102</td>
+                <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Selasa</td>
+                <td>09:00 - 11:00</td>
+                <td>Basis Data</td>
+                <td>Dr. Ahmad Fauzi</td>
+                <td>Ruang 103</td>
+                <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>Selasa</td>
+                    <td>09:00 - 11:00</td>
+                    <td>Basis Data</td>
+                    <td>Dr. Ahmad Fauzi</td>
+                    <td>Ruang 103</td>
+                    <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Rabu</td>
+                <td>13:00 - 15:00</td>
+                <td>Jaringan Komputer</td>
+                <td>Ir. Lisa Wijaya</td>
+                <td>Ruang 104</td>
+                <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Kamis</td>
+                <td>08:00 - 10:00</td>
+                <td>Algoritma dan Struktur Data</td>
+                <td>Dr. Andi Kurniawan</td>
+                <td>Ruang 105</td>
+                <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>Kamis</td>
+                    <td>08:00 - 10:00</td>
+                    <td>Algoritma dan Struktur Data</td>
+                    <td>Dr. Andi Kurniawan</td>
+                    <td>Ruang 105</td>
+                    <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Jumat</td>
+                <td>10:00 - 12:00</td>
+                <td>Kecerdasan Buatan</td>
+                <td>Prof. Dian Suryani</td>
+                <td>Ruang 106</td>
+                <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>Jumat</td>
+                    <td>10:00 - 12:00</td>
+                    <td>Kecerdasan Buatan</td>
+                    <td>Prof. Dian Suryani</td>
+                    <td>Ruang 106</td>
+                    <td><button class="edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="saveSchedule()">Simpan Jadwal</button>
+
+    <script>
+        function editRow(button) {
+            let row = button.parentNode.parentNode;  // Mendapatkan baris (tr) dari tombol yang diklik
+            let cells = row.querySelectorAll('td:not(:last-child)');  // Mendapatkan semua sel kecuali sel terakhir (untuk tombol)
+            if (button.innerText === "Edit") {
+                // Jika mode edit, jadikan sel-sel bisa diedit
+                cells.forEach(cell => {
+                    cell.setAttribute('contenteditable', 'true');
+                    cell.style.backgroundColor = '#fff0b3'; // Ubah warna background saat edit
+                });
+                button.innerText = "Simpan";  // Ubah teks tombol menjadi "Simpan"
+                button.classList.remove("edit-btn");
+                button.classList.add("save-btn");
+            } else {
+                // Jika mode simpan, nonaktifkan edit
+                cells.forEach(cell => {
+                    cell.removeAttribute('contenteditable');
+                    cell.style.backgroundColor = '';  // Kembalikan warna background semula
+                });
+                button.innerText = "Edit";  // Ubah teks tombol kembali ke "Edit"
+                button.classList.remove("save-btn");
+                button.classList.add("edit-btn");
+            }
+        }
+
+        function saveSchedule() {
+            const table = document.getElementById("scheduleTable");
+            const rows = table.getElementsByTagName("tr");
+            let scheduleData = [];
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let rowData = {
+                    hari: cells[0].innerText,
+                    waktu: cells[1].innerText,
+                    mataKuliah: cells[2].innerText,
+                    dosen: cells[3].innerText,
+                    ruang: cells[4].innerText
+                };
+                scheduleData.push(rowData);
+            }
+
+            // Simpan data ke LocalStorage (atau backend server jika diperlukan)
+            localStorage.setItem("jadwalPerkuliahan", JSON.stringify(scheduleData));
+            alert("Jadwal berhasil disimpan!");
+        }
+
+        // Fungsi untuk memuat data jadwal dari LocalStorage (jika ada)
+        window.onload = function() {
+            const savedSchedule = localStorage.getItem("jadwalPerkuliahan");
+            if (savedSchedule) {
+                const table = document.getElementById("scheduleTable");
+                const rows = table.getElementsByTagName("tr");
+                const scheduleData = JSON.parse(savedSchedule);
+
+                for (let i = 0; i < scheduleData.length; i++) {
+                    const cells = rows[i + 1].getElementsByTagName("td");
+                    cells[0].innerText = scheduleData[i].hari;
+                    cells[1].innerText = scheduleData[i].waktu;
+                    cells[2].innerText = scheduleData[i].mataKuliah;
+                    cells[3].innerText = scheduleData[i].dosen;
+                    cells[4].innerText = scheduleData[i].ruang;
+                }
+            }
+        };
+    </script>
+
+</body>
+</html>
